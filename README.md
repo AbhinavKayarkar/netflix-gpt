@@ -26,4 +26,4 @@
  2. downgrade to react 18 version for compatibility by  command
     - npm install react@18 react-dom@18
 
- 3. Remove all unnessay code and install the Tailwaind CSS for design
+ 3. Remove all unnessay code and install the Tailwaind CSS for design by reading documentation
