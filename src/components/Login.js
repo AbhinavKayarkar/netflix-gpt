@@ -1,6 +1,11 @@
 import React, { useRef, useState } from "react";
 import Header from "./Header";
 import { checkValidfield } from "../utils/validate";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -14,12 +19,44 @@ const Login = () => {
     let message = null;
     if (!isSignUp) {
       message = checkValidfield(email.current.value, password.current.value);
+
+      // firebase sign in logic
+      signInWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrMsg(errorMessage);
+        });
     } else {
       message = checkValidfield(
         email.current.value,
         password.current.value,
         mobile.current.value
       );
+
+      // firebase sign up logic
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          setErrMsg(errorMessage);
+        });
     }
 
     setErrMsg(message);
@@ -85,7 +122,7 @@ const Login = () => {
           className="p-2 m-2 w-full text-sm cursor-pointer"
           onClick={() => setIsSignUp(!isSignUp)}
         >
-          New to Netflix? Sign up now.
+          {!isSignUp ? "New to Netflix? Sign up now." : "Already registed."}  
         </p>
       </form>
     </div>
