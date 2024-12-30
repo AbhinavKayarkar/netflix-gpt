@@ -4,10 +4,16 @@ import { checkValidfield } from "../utils/validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUsers } from "../utils/Slices/userSlice";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [isSignUp, setIsSignUp] = useState(false);
   const [errMsg, setErrMsg] = useState(null);
   const email = useRef(null);
@@ -29,11 +35,14 @@ const Login = () => {
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
+          // user profile update
+          navigate("/browse");
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           setErrMsg(errorMessage);
+          navigate("/");
         });
     } else {
       message = checkValidfield(
@@ -51,6 +60,27 @@ const Login = () => {
         .then((userCredential) => {
           // Signed up
           const user = userCredential.user;
+          updateProfile(user, {
+            displayName: fullName.current.value,
+            photoURL:
+              "https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg",
+          })
+            .then(() => {
+              const { uid, email, displayName, photoURL } = auth.currentUser;
+              dispatch(
+                addUsers({
+                  uid: uid,
+                  email: email,
+                  displayName: displayName,
+                  photoURL: photoURL,
+                })
+              );
+              navigate("/browse");
+            })
+            .catch((error) => {
+              // An error occurred
+              setErrMsg(error.message);
+            });
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -67,7 +97,7 @@ const Login = () => {
       <Header />
 
       {/* background Image for login page */}
-      <div className="absolute">
+      <div className="absolute mt-0">
         <img
           src="https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/IN-en-20241223-TRIFECTA-perspective_1502c512-be5f-4f14-b21a-e3d75fe159ab_large.jpg"
           alt="bg-img"
@@ -122,7 +152,9 @@ const Login = () => {
           className="p-2 m-2 w-full text-sm cursor-pointer"
           onClick={() => setIsSignUp(!isSignUp)}
         >
-          {!isSignUp ? "New to Netflix? Sign up now." : "Already registed."}  
+          {!isSignUp
+            ? "New to Netflix? Sign up now."
+            : "Already registed !!! Sign in."}
         </p>
       </form>
     </div>
