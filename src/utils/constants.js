@@ -8,7 +8,6 @@ export const MOVIE_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMDY0NDFkMmUzYTFjYWYyZGRkYmI1ZGIxNTQ4NmVhMiIsIm5iZiI6MTczNTYzNDg4NC41MTUsInN1YiI6IjY3NzNhZmM0ZmJlMzcyMmE5ODYxODE2YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.U3qzaeRHsNOFjqL2WOzAMHqp-aS28JaEYh5g2eHnlGs",
+    Authorization: process.env.REACT_APP_MOVIE_API_KEY,
   },
 };
