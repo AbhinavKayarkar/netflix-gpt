@@ -47,17 +47,15 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex justify-between">
-      <div>
-        <div className="absolute bg-gradient-to-b from-black w-full z-50">
-          <img className="h-20 mx-12 " src={NETFLIX_LOGO} alt="netflix-logo" />
-        </div>
+    <div className="absolute flex justify-between bg-gradient-to-b from-black w-full">
+      <div className="z-50">
+        <img className="h-20 mx-16" src={NETFLIX_LOGO} alt="netflix-logo" />
       </div>
 
       {user && (
-        <div className=" flex mt-5 pr-5 z-50">
+        <div className="flex mt-5 pr-5  text-white">
           <img className="w-12 h-12" src={user?.photoURL} alt="profile-img" />
-          <div className="p-1">
+          <div>
             <p>{user?.displayName}</p>
             <button onClick={handleSignOut} className="cursor-pointer">
               Sign Out
