@@ -1,40 +1,68 @@
-import React from "react";
-import { signOut } from "firebase/auth";
+import React, { useEffect } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addUsers, removeUser } from "../utils/Slices/userSlice";
+import { NETFLIX_LOGO } from "../utils/constants";
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
         // Sign-out successful.
-        navigate("/");
       })
       .catch((error) => {
         // An error happened.
         navigate("/errorpage");
       });
   };
+
+  // useEffect for onAuthStateChange
+  useEffect(() => {
+    const unsubscirbe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const { uid, email, displayName, photoURL } = user;
+        dispatch(
+          addUsers({
+            uid: uid,
+            email: email,
+            displayName: displayName,
+            photoURL: photoURL,
+          })
+        );
+        navigate("/browse");
+      } else {
+        // User is signed out
+        // ...
+        dispatch(removeUser());
+        navigate("/");
+      }
+    });
+
+    // clean up function for unsubscirbe
+    return () => unsubscirbe();
+  }, []);
+
   return (
     <div className="flex justify-between">
       <div>
         <div className="absolute bg-gradient-to-b from-black w-full z-50">
-          <img
-            className="h-20 mx-12 "
-            src="https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production/consent/87b6a5c0-0104-4e96-a291-092c11350111/01938dc4-59b3-7bbc-b635-c4131030e85f/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png"
-            alt="netflix-logo"
-          />
+          <img className="h-20 mx-12 " src={NETFLIX_LOGO} alt="netflix-logo" />
         </div>
       </div>
 
       {user && (
         <div className=" flex mt-5 pr-5 z-50">
           <img className="w-12 h-12" src={user?.photoURL} alt="profile-img" />
-          <button onClick={handleSignOut} className="cursor-pointer">
-            Sign Out
-          </button>
+          <div className="p-1">
+            <p>{user?.displayName}</p>
+            <button onClick={handleSignOut} className="cursor-pointer">
+              Sign Out
+            </button>
+          </div>
         </div>
       )}
     </div>

@@ -97,3 +97,8 @@
 
 17. Update a user's profile (photo, displayName), fixing the bugs if any
     - updateProfile API in firebase
+
+18. Bug fix : 
+    - without login the user can acess the /browse, so we have to implement the navigation logic inside the *onAuthStateChage API* in header.js component
+    - clean up function called unsubscribe to be called in useEffect for unMounting the component 
+19. Make the constant file in project to store all the constatnt, url, string in centeral place 
