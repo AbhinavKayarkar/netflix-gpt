@@ -53,7 +53,7 @@ const Header = () => {
       </div>
 
       {user && (
-        <div className="flex mt-5 pr-5  text-white">
+        <div className="flex mt-5 pr-5 z-50  text-white">
           <img className="w-12 h-12" src={user?.photoURL} alt="profile-img" />
           <div>
             <p>{user?.displayName}</p>
