@@ -11,3 +11,5 @@ export const MOVIE_OPTIONS = {
     Authorization: process.env.REACT_APP_MOVIE_API_KEY,
   },
 };
+
+export const IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
