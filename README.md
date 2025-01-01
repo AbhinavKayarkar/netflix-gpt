@@ -96,19 +96,23 @@
 16. navigate the to user /browse if successful sign-up/sign-in , else show error
 
 17. Update a user's profile (photo, displayName), fixing the bugs if any
+
     - updateProfile API in firebase
 
-18. Bug fix : 
-    - without login the user can acess the /browse, so we have to implement the navigation logic inside the *onAuthStateChage API* in header.js component
-    - clean up function called unsubscribe to be called in useEffect for unMounting the component 
+18. Bug fix :
 
-19. Make the constant file in project to store all the constatnt, url, string in centeral place 
+    - without login the user can acess the /browse, so we have to implement the navigation logic inside the _onAuthStateChage API_ in header.js component
+    - clean up function called unsubscribe to be called in useEffect for unMounting the component
+
+19. Make the constant file in project to store all the constatnt, url, string in centeral place
 
 20. Register on TMDB for movies API and make a app and get Access token & API key.
-    -   https://www.themoviedb.org/settings/api
+
+    - https://www.themoviedb.org/settings/api
 
 21. Get Data from TMDB now playing movies list API .
-    -   https://developer.themoviedb.org/reference/movie-now-playing-list
+
+    - https://developer.themoviedb.org/reference/movie-now-playing-list
 
 22. Make custom hook for now playing movies like useNowPlayingMovies
 
@@ -120,10 +124,10 @@
 
 26. update the store with trailer video data
 
-27. Embedded the youtube video and make it autoplay and mute && Tailwind CSS to make main conatiner 
+27. Embedded the youtube video and make it autoplay and mute && Tailwind CSS to make main conatiner
 
-28. Make Secondary component with movielist * n && movieCard * n 
+28. Make Secondary component with movielist _ n && movieCard _ n
 
 29. make custom hooks for each movielist and add them in movieSlice.
 
-30. Make use of tailwind CSS to make in awesome. 
+30. Make use of tailwind CSS to make in awesome.
