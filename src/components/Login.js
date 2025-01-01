@@ -10,7 +10,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUsers } from "../utils/Slices/userSlice";
-import { USER_AVATAR } from "../utils/constants";
+import { USER_AVATAR,NETFLIX_BG_IMAGE } from "../utils/constants";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -88,7 +88,6 @@ const Login = () => {
           setErrMsg(errorMessage);
         });
     }
-
     setErrMsg(message);
   };
 
@@ -97,10 +96,10 @@ const Login = () => {
       <Header />
 
       {/* background Image for login page */}
-      <div className="absolute mt-1">
+      <div className="absolute mt-1 -z-10">
         <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/IN-en-20241223-TRIFECTA-perspective_1502c512-be5f-4f14-b21a-e3d75fe159ab_large.jpg"
-          alt="bg-img"
+          src={NETFLIX_BG_IMAGE}
+          alt="netflix-bg-img"
         />
       </div>
 

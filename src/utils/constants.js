@@ -4,6 +4,9 @@ export const NETFLIX_LOGO =
 export const USER_AVATAR =
   "https://i.pinimg.com/564x/1b/a2/e6/1ba2e6d1d4874546c70c91f1024e17fb.jpg";
 
+export const NETFLIX_BG_IMAGE =
+  "https://assets.nflxext.com/ffe/siteui/vlv3/aa9edac4-a0e6-4f12-896e-32c518daec62/web/IN-en-20241223-TRIFECTA-perspective_1502c512-be5f-4f14-b21a-e3d75fe159ab_large.jpg";
+
 export const MOVIE_OPTIONS = {
   method: "GET",
   headers: {
@@ -13,3 +16,9 @@ export const MOVIE_OPTIONS = {
 };
 
 export const IMAGE_URL = "https://image.tmdb.org/t/p/w500/";
+
+export const LANGUAGE_SUPPORTED = [
+  { identifier: "en", language: "English" },
+  { identifier: "hindi", language: "Hindi" },
+  { identifier: "spanish", language: "Spanish" },
+];

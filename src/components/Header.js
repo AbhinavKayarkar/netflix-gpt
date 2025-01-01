@@ -6,10 +6,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addUsers, removeUser } from "../utils/Slices/userSlice";
 import { NETFLIX_LOGO } from "../utils/constants";
 import { toggleGPTSearch } from "../utils/Slices/gptSlice";
+import { LANGUAGE_SUPPORTED } from "../utils/constants";
+import { changeLanguage } from "../utils/Slices/configSlice";
 const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  const isGPTSearch = useSelector((state) => state.gpt.isGPTSearch);
   const handleSignOut = () => {
     signOut(auth)
       .then(() => {
@@ -51,6 +54,10 @@ const Header = () => {
     dispatch(toggleGPTSearch());
   };
 
+  const handleLangChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
     <div className="absolute flex justify-between bg-gradient-to-b from-black w-screen items-center m-0">
       <div className="z-40">
@@ -59,11 +66,18 @@ const Header = () => {
 
       {user && (
         <div className="flex mt-5 pr-5 z-50  text-white">
+         { isGPTSearch && <select className="bg-black text-white" onChange={handleLangChange}>
+            {LANGUAGE_SUPPORTED.map((lang) => (
+              <option key={lang.identifier} value={lang.identifier}>
+                {lang.language}
+              </option>
+            ))}
+          </select>}
           <button
             className="py-2 px-6 mx-2 bg-purple-700"
             onClick={handleGPTSearch}
           >
-            GPTSearch
+            {isGPTSearch ? "HomePage" : "GPTSearch"}
           </button>
           <img className="w-12 h-12" src={user?.photoURL} alt="profile-img" />
           <div>
