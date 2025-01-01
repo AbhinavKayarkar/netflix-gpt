@@ -7,7 +7,8 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useUpcomimgMovies from "../hooks/useUpcomimgMovies";
 import useTopRated from "../hooks/useTopRated.js";
 import { useSelector } from "react-redux";
-import GPTsearch from "./GPTsearch.js";
+import GPTSearch from "./GPTSearch.js";
+
 const Browse = () => {
   const isGPTSearch = useSelector((state) => state.gpt.isGPTSearch);
   useNowPlayingMovies();
@@ -23,7 +24,7 @@ const Browse = () => {
           <SecondaryComponent />
         </>
       ) : (
-        <GPTsearch />
+        <GPTSearch />
       )}
     </>
   );
