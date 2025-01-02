@@ -131,3 +131,9 @@
 29. make custom hooks for each movielist and add them in movieSlice.
 
 30. Make use of tailwind CSS to make in awesome.
+
+31. create gptsearchbar and gptsearch suggestions components.
+
+32. Multi language feature is implemented
+
+33. 
