@@ -14,7 +14,7 @@ const VideoBackground = ({ videoID }) => {
         src={`https://www.youtube.com/embed/${trailerKey}?autoplay=1&mute=1&modestbranding=1&rel=0`}
         title="YouTube video player"
         allow=" autoplay;encrypted-media;"
-        allowfullscreen
+        allowFullScreen
         referrerPolicy="strict-origin-when-cross-origin"
       ></iframe>
     </div>

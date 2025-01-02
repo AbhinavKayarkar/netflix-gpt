@@ -8,17 +8,16 @@ const GPTSearchBar = () => {
   const langKey = useSelector((state) => state.config.lang);
   const gptSearch = useRef();
 
-  const handleGPTSearch = async () => {
-    console.log(gptSearch.current.value);
+  async function handleGPTSearch() {
     // OPENAI integration in our project
 
     const completion = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "assitant", content: gptSearch.current.value }],
+      messages: [{ role: "user", content: gptSearch.current.value }],
     });
 
-    console.log(completion.choices[0].message);
-  };
+    console.log(completion?.choices[0]?.message);
+  }
   return (
     <>
       <div className="absolute -z-10">
