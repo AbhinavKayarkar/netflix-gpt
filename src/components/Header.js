@@ -60,19 +60,25 @@ const Header = () => {
 
   return (
     <div className="absolute flex justify-between bg-gradient-to-b from-black w-screen items-center m-0">
-      <div className="z-40">
-        <img className="h-20 mx-16" src={NETFLIX_LOGO} alt="netflix-logo" />
+      <div className="z-50">
+        <img
+          className="h-20 mx-16 cursor-pointer"
+          src={NETFLIX_LOGO}
+          alt="netflix-logo"
+        />
       </div>
 
       {user && (
         <div className="flex mt-5 pr-5 z-50  text-white">
-         { isGPTSearch && <select className="bg-black text-white" onChange={handleLangChange}>
-            {LANGUAGE_SUPPORTED.map((lang) => (
-              <option key={lang.identifier} value={lang.identifier}>
-                {lang.language}
-              </option>
-            ))}
-          </select>}
+          {isGPTSearch && (
+            <select className="bg-black text-white" onChange={handleLangChange}>
+              {LANGUAGE_SUPPORTED.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.language}
+                </option>
+              ))}
+            </select>
+          )}
           <button
             className="py-2 px-6 mx-2 bg-purple-700"
             onClick={handleGPTSearch}
