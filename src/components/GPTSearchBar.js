@@ -35,10 +35,7 @@ const GPTSearchBar = () => {
   }
   return (
     <>
-      <div className="absolute -z-10">
-        <img src={NETFLIX_BG_IMAGE} alt="netflix-bg-img" />
-      </div>
-      <div className="pt-[10%] px-4 w-[50%] mx-auto">
+      <div className="pt-[10%] px-4 md:w-[50%] mx-auto sm:w-[100%]">
         <form
           className="bg-black p-4 grid grid-cols-12"
           onSubmit={(e) => e.preventDefault()}

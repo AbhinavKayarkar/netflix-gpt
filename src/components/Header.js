@@ -59,8 +59,8 @@ const Header = () => {
   };
 
   return (
-    <div className="absolute flex justify-between bg-gradient-to-b from-black w-screen items-center m-0">
-      <div className="z-50">
+    <div className="absolute flex justify-between bg-gradient-to-b from-black w-screen items-center  md:flex-row sm:flex-col">
+      <div className="z-40">
         <img
           className="h-20 mx-16 cursor-pointer"
           src={NETFLIX_LOGO}
@@ -69,7 +69,7 @@ const Header = () => {
       </div>
 
       {user && (
-        <div className="flex mt-5 pr-5 z-50  text-white">
+        <div className="flex mt-5 pr-5 z-50  text-white justify-between">
           {isGPTSearch && (
             <select className="bg-black text-white" onChange={handleLangChange}>
               {LANGUAGE_SUPPORTED.map((lang) => (

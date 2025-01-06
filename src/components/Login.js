@@ -96,8 +96,8 @@ const Login = () => {
       <Header />
 
       {/* background Image for login page */}
-      <div className="absolute mt-1 -z-10">
-        <img
+      <div className="absolute mt-1 -z-10 ">
+        <img className="h-screen object-cover"
           src={NETFLIX_BG_IMAGE}
           alt="netflix-bg-img"
         />
@@ -106,7 +106,7 @@ const Login = () => {
       {/* login form */}
       <form
         onSubmit={(e) => e.preventDefault()}
-        className="w-3/12 bg-black absolute mx-auto right-0 left-0 my-36  text-white p-12 rounded-lg bg-opacity-80"
+        className="sm:w-2/3 md:w-3/12 bg-black absolute mx-auto right-0 left-0 my-36  text-white p-12 rounded-lg bg-opacity-80"
       >
         <p className="text-2xl p-2">{!isSignUp ? "Sign In" : "Sign Up"}</p>
         {isSignUp && (

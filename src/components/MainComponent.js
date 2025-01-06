@@ -9,7 +9,7 @@ const MainComponent = () => {
   const { original_title, id, overview } = movies[0];
 
   return (
-    <div>
+    <div className="md:pt-0 sm:pt-[30%] bg-black">
       <VideoTitle title={original_title} overview={overview} />
       <VideoBackground videoID={id} />
     </div>
