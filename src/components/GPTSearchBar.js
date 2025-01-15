@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { MOVIE_OPTIONS, NETFLIX_BG_IMAGE } from "../utils/constants";
+import { MOVIE_OPTIONS } from "../utils/constants";
 import { lang } from "../utils/languageContants";
 import { useDispatch, useSelector } from "react-redux";
 // import openai from "../utils/openai";

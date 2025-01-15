@@ -31,7 +31,9 @@ const Browse = () => {
           <SecondaryComponent />
         </>
       ) : (
-        <GPTSearch />
+        <>
+          <GPTSearch />
+        </>
       )}
     </>
   );
