@@ -7,7 +7,7 @@ import usePopularMovies from "../hooks/usePopularMovies";
 import useUpcomimgMovies from "../hooks/useUpcomimgMovies";
 import useTopRated from "../hooks/useTopRated.js";
 import { useDispatch, useSelector } from "react-redux";
-import GPTSearch from "./GPTSearch.js";
+import GPTSearch from "../../src/components/GPTSearch.js";
 import { removeSearchMovies } from "../utils/Slices/gptSlice.js";
 
 const Browse = () => {
