@@ -24,6 +24,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-
-src/utils/firebase.js
-src/utils/constants.js
