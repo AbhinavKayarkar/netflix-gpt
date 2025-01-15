@@ -1,7 +1,8 @@
 {
   "projects": {
-    "default": "gptnetflix-50ef3",
-    "y": "gptnetflix-50ef3"
+    "default": "netflix-gpt-edf84",
+    "y": "gptnetflix-50ef3",
+    "netflix": "netflix-gpt-edf84"
   },
   "targets": {},
   "etags": {}
